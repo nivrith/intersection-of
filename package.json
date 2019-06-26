@@ -1,6 +1,6 @@
 {
   "name": "intersection-of",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Find unique common elements among given arrays",
   "main": "dist/src",
   "repository": "https://github.com/nivrith/intersection-of",
