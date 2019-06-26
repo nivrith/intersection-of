@@ -25,7 +25,7 @@ Find unique common elements among given arrays
 
 // async
 
-const { intersetionOf } = require('intersection-of');
+const { intersectionOf } = require('intersection-of');
 
 intersectionOf([1,2,2,3,4], [2,3,6,7]);
 .then((result) => {
