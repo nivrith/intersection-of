@@ -6,7 +6,7 @@ import {
   sample2,
   expected
 } from './mocks/sample';
-import intersectionOf, { intersectionOfSync, intersectionOfFunctional, intersectionOfFunctionalSync } from '../src/index';
+import {intersectionOf, intersectionOfSync, intersectionOfFunctional, intersectionOfFunctionalSync } from '../src/index';
 
 describe( "Intersection Of", () => {
   describe( "Should return an empty array for deep object identity inequality", () => {

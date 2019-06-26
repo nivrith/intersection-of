@@ -5,7 +5,7 @@
  * @param {...Array < Array < T >>} arrays
  * @returns {Promise < Array < T >>}
  */
-async function intersectionOf < T > ( ...arrays: Array < Array < T >> ): Promise < Array < T >> {
+export async function intersectionOf < T > ( ...arrays: Array < Array < T >> ): Promise < Array < T >> {
   return intersectionOfSync(...arrays);
 }
 
