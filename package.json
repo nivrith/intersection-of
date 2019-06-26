@@ -8,9 +8,9 @@
   "license": "MIT",
   "scripts": {
     "compile": "npm run clean && tsc -b",
-    "start": "yarn build && node dist/src/index",
+    "start": "yarn compile && node dist/src/index",
     "test": "nyc mocha --require ts-node/register test/**/*.spec.ts",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run compile",
     "pretest": "npm run compile",
     "clean": "del-cli dist",
     "docs": "typedoc src"
