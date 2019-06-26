@@ -1,7 +1,3 @@
-import intersection from 'lodash/intersection';
-import {sample1, sample2} from '../test/mocks/sample';
-
-
 /**
  *
  *
@@ -10,9 +6,9 @@ import {sample1, sample2} from '../test/mocks/sample';
  * @returns {Promise < Array < T >>}
  */
 async function intersectionOf < T > ( ...arrays: Array < Array < T >> ): Promise < Array < T >> {
-  return await intersectionOfSync(...arrays);
-
+  return intersectionOfSync(...arrays);
 }
+
 
 
 
@@ -26,7 +22,17 @@ export default intersectionOf;
  * @param {...Array < Array < T >>} arrays
  * @returns {Array < T >}
  */
-export function intersectionOfFunctional < T > ( ...arrays: Array < Array < T >> ): Array < T > {
+export function intersectionOfFunctionalSync < T > ( ...arrays: Array < Array < T >> ): Array < T > {
+  const cache = [];
+  return arrays.reduce( ( previousArray: Array < T > , currentArray: Array < T > ) => {
+    const intersection = new Set( [ ...( new Set( previousArray ) ) ].filter( x => new Set( currentArray ).has( x ) ) );
+    return Array.from( intersection );
+  } )
+
+}
+
+
+export async function intersectionOfFunctional < T > ( ...arrays: Array < Array < T >> ): Promise<Array < T >> {
   const cache = [];
   return arrays.reduce( ( previousArray: Array < T > , currentArray: Array < T > ) => {
     const intersection = new Set( [ ...( new Set( previousArray ) ) ].filter( x => new Set( currentArray ).has( x ) ) );
