@@ -65,9 +65,7 @@
   "exclude": [
     "node_modules",
     "definitions",
-    "test",
-    "definitions",
-    "dist"
+    "definitions"
   ],
   "lib": [
     "es2016"

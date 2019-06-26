@@ -1,10 +1,10 @@
 {
   "name": "intersection-of",
   "version": "1.0.2",
-  "description": "s",
-  "main": "src/sindex.js",
+  "description": "Find unique common elements among given arrays",
+  "main": "dist/src",
   "repository": "https://github.com/nivrith/intersection-of",
-  "author": "Nivrith <nivrith.mandayam@gmail.com>",
+  "author": "Nivrith <nivrithgomatam@gmail.com>",
   "license": "MIT",
   "keywords": [
     "array",
