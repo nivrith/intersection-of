@@ -11,9 +11,6 @@ async function intersectionOf < T > ( ...arrays: Array < Array < T >> ): Promise
 
 
 
-
-export default intersectionOf;
-
 /**
  *
  *
@@ -23,7 +20,6 @@ export default intersectionOf;
  * @returns {Array < T >}
  */
 export function intersectionOfFunctionalSync < T > ( ...arrays: Array < Array < T >> ): Array < T > {
-  const cache = [];
   return arrays.reduce( ( previousArray: Array < T > , currentArray: Array < T > ) => {
     const intersection = new Set( [ ...( new Set( previousArray ) ) ].filter( x => new Set( currentArray ).has( x ) ) );
     return Array.from( intersection );
@@ -98,4 +94,12 @@ export function intersectionOfSync < T > ( ...arrays: Array < Array < T >> ): Ar
 
   return result;
 
+}
+
+
+export default {
+  intersectionOf,
+  intersectionOfSync,
+  intersectionOfFunctional,
+  intersectionOfFunctionalSync
 }
