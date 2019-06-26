@@ -11,7 +11,7 @@
     "start": "yarn build && node dist/src/index",
     "test": "mocha --require ts-node/register test/**/*.spec.ts",
     "prepublishOnly": "npm run build",
-    "pretest": "npm run compile -- --sourceMap",
+    "pretest": "npm run compile",
     "clean": "del-cli dist",
     "docs": "typedoc src"
   },

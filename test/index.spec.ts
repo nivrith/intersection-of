@@ -9,15 +9,12 @@ import {
 import intersectionOf from '../src/index';
 
 describe( "Intersection Of", () => {
-  describe( "Should return array of common elements", () => {
-    it( "Should return expected result", async function () {
+  describe( "Should return an empty array for deep object identity inequality", () => {
+    it( "Should return empty array", async function () {
       let result = await intersectionOf( sample1, sample2 );
       await expect( result ).to.members( expected );
     } );
   } )
-} );
-
-describe( "Intersection Of", () => {
 
   describe( "Should return array of common elements", () => {
     let array1: Array<number>;
@@ -28,7 +25,7 @@ describe( "Intersection Of", () => {
        array2 = [1,2,4,3,2, 67, 34, 23];
     } );
 
-    it( "Should return expected result", async function () {
+    it( "Should return [1,2,4,3,67]", async function () {
       let result = await intersectionOf(array1, array2);
       await expect( result ).to.members( [1,2,4,3, 67] );
     } );
