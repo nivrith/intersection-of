@@ -1,8 +1,8 @@
 import _intersection from 'lodash.intersection';
 import _intersectionBy from 'lodash.intersectionby';
 import _intersectionWith from 'lodash.intersectionwith';
-import memoize from 'fast-memoize';
-import fastDeepEqual from 'fast-deep-equal';
+const memoize = require('fast-memoize');
+const fastDeepEqual = require('fast-deep-equal');
 
 
  async function $intersectionOf < T > ( ...arrays: Array < Array < T >> ): Promise < Array < T >>;
