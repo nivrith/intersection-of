@@ -68,7 +68,9 @@
     "definitions"
   ],
   "lib": [
-    "es2016"
+    "es2016",
+      "dom",
+      "es5"
   ],
   "typedocOptions": {
 		"out": "docs",
