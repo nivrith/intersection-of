@@ -4,7 +4,10 @@ import {
 import {
   sample1,
   sample2,
-  expected
+  expected,
+  expected2,
+  sampleData3,
+  sampleData4
 } from './mocks/sample';
 import {intersectionOf, intersectionOfSync, intersectionOfFunctional, intersectionOfFunctionalSync } from '../src/index';
 
@@ -72,6 +75,11 @@ describe( "Intersection Of Sync", () => {
     it( "Should return [1,2,4,3,67]", async function () {
       let result = intersectionOfSync(array1, array2);
       expect( result ).to.members( [1,2,4,3, 67] );
+    } );
+
+    it( "Should return array of common elements", function () {
+      let result = intersectionOfSync( sampleData3, sampleData4 );
+      expect( result ).to.members( expected2 );
     } );
   } )
 } );

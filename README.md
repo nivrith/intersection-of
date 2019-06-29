@@ -11,6 +11,8 @@ Find unique common elements among given arrays
 
 - Super Fast
 
+- Memoized
+
 - Written in Typescript
 
 - Async and Sync methods
@@ -27,7 +29,7 @@ Find unique common elements among given arrays
 
 const { intersectionOf } = require('intersection-of');
 
-intersectionOf([1,2,2,3,4], [2,3,6,7]);
+intersectionOf([1,2,2,3,4], [2,3,6,7])
 .then((result) => {
   console.log(result); // [2,3]
 });

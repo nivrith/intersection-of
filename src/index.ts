@@ -1,3 +1,12 @@
+import _intersection from 'lodash.intersection';
+import _intersectionBy from 'lodash.intersectionby';
+import _intersectionWith from 'lodash.intersectionwith';
+import memoize from 'fast-memoize';
+import fastDeepEqual from 'fast-deep-equal';
+
+
+ async function $intersectionOf < T > ( ...arrays: Array < Array < T >> ): Promise < Array < T >>;
+
 /**
  *
  *
@@ -5,8 +14,8 @@
  * @param {...Array < Array < T >>} arrays
  * @returns {Promise < Array < T >>}
  */
-export async function intersectionOf < T > ( ...arrays: Array < Array < T >> ): Promise < Array < T >> {
-  return intersectionOfSync(...arrays);
+ async function $intersectionOf < T > ( ...arrays: Array < Array < T >> ): Promise < Array < T >> {
+  return $intersectionOfSync(...arrays);
 }
 
 
@@ -19,7 +28,7 @@ export async function intersectionOf < T > ( ...arrays: Array < Array < T >> ): 
  * @param {...Array < Array < T >>} arrays
  * @returns {Array < T >}
  */
-export function intersectionOfFunctionalSync < T > ( ...arrays: Array < Array < T >> ): Array < T > {
+ function $intersectionOfFunctionalSync < T > ( ...arrays: Array < Array < T >> ): Array < T > {
   return arrays.reduce( ( previousArray: Array < T > , currentArray: Array < T > ) => {
     const intersection = new Set( [ ...( new Set( previousArray ) ) ].filter( x => new Set( currentArray ).has( x ) ) );
     return Array.from( intersection );
@@ -28,7 +37,7 @@ export function intersectionOfFunctionalSync < T > ( ...arrays: Array < Array < 
 }
 
 
-export async function intersectionOfFunctional < T > ( ...arrays: Array < Array < T >> ): Promise<Array < T >> {
+ async function $intersectionOfFunctional < T > ( ...arrays: Array < Array < T >> ): Promise<Array < T >> {
   const cache = [];
   return arrays.reduce( ( previousArray: Array < T > , currentArray: Array < T > ) => {
     const intersection = new Set( [ ...( new Set( previousArray ) ) ].filter( x => new Set( currentArray ).has( x ) ) );
@@ -37,65 +46,29 @@ export async function intersectionOfFunctional < T > ( ...arrays: Array < Array 
 
 }
 
+  function $intersectionOfSync < T > ( ...arrays: Array < Array < T >> ): Array < T >;
+
 /**
  *
  *
  * @export
  * @template T
  * @param {...Array < Array < T >>} arrays
- * @returns {Array < T >}
+ * @returns {Array < T >},
+ * @param {Function} [iteratee] The iteratee invoked per element.
+ * @param {Function} [comparator] The comparator invoked per element.
  */
-export function intersectionOfSync < T > ( ...arrays: Array < Array < T >> ): Array < T > {
-  let result: Array < T >= [];
-  let length = arrays[ 0 ].length;
-  let arrLength = arrays.length;
-  let lastIndex = arrLength;
-  let caches: Array<Set<T>> = Array( arrLength );
-  let maxLength = Infinity;
-
-  // Max length will be the smallest arrayLength we need to traverse
-  while ( lastIndex-- ) {
-    var array = arrays[ lastIndex ];
-    maxLength = Math.min( array.length, maxLength );
-    if ( array.length >= 120 && array.length >= 120 ) {
-      caches[ lastIndex ] = new Set( array )
-    }
-  }
-
-    array = arrays[ 0 ];
-    let seen = caches[ 0 ],
-    index = -1;
-
-  outer: while ( ++index < length && result.length < maxLength ) {
-    let value = array[ index ];
-
-    if ( !(seen
-      ? seen.has(value)
-      : result.includes(value)
-    ) ) {
-      lastIndex = arrLength;
-
-
-      while ( --lastIndex ) {
-        var cache = caches[ lastIndex ];
-        if ( !( cache ?
-            cache.has( value ) :
-            arrays[ lastIndex ].includes( value ) ) ) {
-          continue outer;
-        }
-      }
-
-      if ( seen ) {
-        seen.add( value );
-      }
-      result.push( value );
-    }
-  }
-
-  return result;
-
+ function $intersectionOfSync < T > ( ...arrays: Array < Array < T >> ): Array < T > {
+  return _intersection(...arrays) as Array<T>;
 }
 
+
+
+export const intersectionOfSync = memoize($intersectionOfSync) as typeof $intersectionOfSync;
+export const intersectionOf = memoize($intersectionOf) as typeof $intersectionOf;
+export const intersectionOfFunctional = memoize($intersectionOfFunctional) as typeof $intersectionOfFunctional;
+
+export const intersectionOfFunctionalSync = memoize($intersectionOfFunctionalSync) as typeof $intersectionOfFunctionalSync;
 
 export default {
   intersectionOf,
