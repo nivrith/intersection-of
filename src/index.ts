@@ -5,6 +5,13 @@ const memoize = require('fast-memoize');
 const fastDeepEqual = require('fast-deep-equal');
 
 
+ /**
+  *
+  *
+  * @template T
+  * @param {...Array < Array < T >>} arrays
+  * @returns {Promise < Array < T >>}
+  */
  async function $intersectionOf < T > ( ...arrays: Array < Array < T >> ): Promise < Array < T >>;
 
 /**
@@ -37,6 +44,13 @@ const fastDeepEqual = require('fast-deep-equal');
 }
 
 
+ /**
+  *
+  *
+  * @template T
+  * @param {...Array < Array < T >>} arrays
+  * @returns {Promise<Array < T >>}
+  */
  async function $intersectionOfFunctional < T > ( ...arrays: Array < Array < T >> ): Promise<Array < T >> {
   const cache = [];
   return arrays.reduce( ( previousArray: Array < T > , currentArray: Array < T > ) => {
@@ -46,6 +60,13 @@ const fastDeepEqual = require('fast-deep-equal');
 
 }
 
+  /**
+   *
+   *
+   * @template T
+   * @param {...Array < Array < T >>} arrays
+   * @returns {Array < T >}
+   */
   function $intersectionOfSync < T > ( ...arrays: Array < Array < T >> ): Array < T >;
 
 /**
