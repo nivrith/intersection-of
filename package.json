@@ -1,6 +1,6 @@
 {
   "name": "intersection-of",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Find unique common elements among given arrays",
   "keywords": [
     "array",
