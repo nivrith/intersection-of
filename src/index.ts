@@ -2,8 +2,7 @@ import _intersection from 'lodash.intersection';
 import _intersectionBy from 'lodash.intersectionby';
 import _intersectionWith from 'lodash.intersectionwith';
 const memoize = require('fast-memoize');
-const fastDeepEqual = require('fast-deep-equal');
-
+import SlimCache from 'slim-cache';
 
  /**
   *
@@ -83,17 +82,17 @@ const fastDeepEqual = require('fast-deep-equal');
   return _intersection(...arrays) as Array<T>;
 }
 
+const cache = { create: () => new SlimCache() };
 
+export const intersectionOfSync = memoize($intersectionOfSync, {cache}) as typeof $intersectionOfSync;
+export const intersectionOf = memoize($intersectionOf, {cache}) as typeof $intersectionOf;
+export const intersectionOfFunctional = memoize($intersectionOfFunctional, {cache}) as typeof $intersectionOfFunctional;
 
-export const intersectionOfSync = memoize($intersectionOfSync) as typeof $intersectionOfSync;
-export const intersectionOf = memoize($intersectionOf) as typeof $intersectionOf;
-export const intersectionOfFunctional = memoize($intersectionOfFunctional) as typeof $intersectionOfFunctional;
+export const intersectionOfFunctionalSync = memoize($intersectionOfFunctionalSync, {cache}) as typeof $intersectionOfFunctionalSync;
 
-export const intersectionOfFunctionalSync = memoize($intersectionOfFunctionalSync) as typeof $intersectionOfFunctionalSync;
-
-export default {
+export default  {
   intersectionOf,
   intersectionOfSync,
   intersectionOfFunctional,
   intersectionOfFunctionalSync
-}
+};
